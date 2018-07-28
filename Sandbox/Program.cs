@@ -3,35 +3,76 @@ using System.IO;
 
 namespace Sandbox
 {
-    class Program 
+    class Program
     {
         static void Main(string[] args)
         {
             WriteFibonacci();
-            
+            ReadFibonacci();
+
         }
         static void WriteFibonacci()
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"\\fibonacci.txt";
-            double z = 0;
-            double a = 0;
-            double b = 1;
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\fibonacci.txt";
+            double next = 0;
+            double first = 0;
+            double second = 1;
             using (StreamWriter sw = new StreamWriter(path))
             {
-                for (int x = 0; x < 10; x++)
-                {
-                    for (int y = 0; y < 9; y++)
+                    for (int y = 1; y < 101; y++)
                     {
-                        z = a + b;
-                        sw.Write(z + ",");
-                        a = b;
-                        b = z;
+                        next = first + second;
+                        int z = (y % 10);
+                        bool ck = (z == 0) ? true : false;
+                        if (ck)
+                        {
+                            sw.WriteLine(next + ",");
+                        }
+                        else
+                        {
+                            sw.Write(next + ",");
+                        }
+                        first = second;
+                        second = next;
                     }
-                    z = a + b;
-                    sw.WriteLine(z+",");
-                    a = b;
-                    b = z;
+            }
+        }
+        static void ReadFibonacci()
+        {
+            String line;
+            ConsoleKeyInfo k;
+
+            try
+            {
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\fibonacci.txt";
+                StreamReader sr = new StreamReader(path);
+                line = sr.ReadLine();
+
+                while (line != null)
+                {
+                    Console.WriteLine(line);
+                    do
+                    {
+                        Console.WriteLine("Press Enter for next line of Fibonacci.");
+                        k = Console.ReadKey();
+                    } while (k.Key != ConsoleKey.Enter);
+
+
+                      line = sr.ReadLine();
                 }
+
+                Console.WriteLine("You have reached the end of the file. Press any key to exit.");
+                Console.ReadKey();
+                sr.Close();
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Executing finally block.");
             }
         }
     }
