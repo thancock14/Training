@@ -38,7 +38,9 @@ namespace Sandbox
                     }
             }
         }
-
+        
+        /*This function writes fibonacci numbers from fibonacci.txt file to console 
+        1 line at a time waiting for user to press enter for next line*/
         static void ReadFibonacci()
         {
             String line;
