@@ -8,8 +8,8 @@ namespace Sandbox
     {
         public static void Main(string[] args)
         {
-            //WriteFibonacci();
-            //ReadFibonacci();
+            WriteFibonacci();
+            ReadFibonacci();
             ReadToFile();
 
         }
