@@ -8,7 +8,7 @@ namespace Sandbox
         static void Main(string[] args)
         {
             WriteFibonacci();
-            ReadFibonacci();
+           
 
         }
         static void WriteFibonacci()
@@ -37,43 +37,6 @@ namespace Sandbox
                     }
             }
         }
-        static void ReadFibonacci()
-        {
-            String line;
-            ConsoleKeyInfo k;
-
-            try
-            {
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\fibonacci.txt";
-                StreamReader sr = new StreamReader(path);
-                line = sr.ReadLine();
-
-                while (line != null)
-                {
-                    Console.WriteLine(line);
-                    do
-                    {
-                        Console.WriteLine("Press Enter for next line of Fibonacci.");
-                        k = Console.ReadKey();
-                    } while (k.Key != ConsoleKey.Enter);
-
-
-                      line = sr.ReadLine();
-                }
-
-                Console.WriteLine("You have reached the end of the file. Press any key to exit.");
-                Console.ReadKey();
-                sr.Close();
-                
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception: " + e.Message);
-            }
-            finally
-            {
-                Console.WriteLine("Executing finally block.");
-            }
-        }
+       
     }
 }
